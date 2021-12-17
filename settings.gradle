@@ -1,2 +1,2 @@
 include ':app', ':LibMediaPicker'
-include ':LibMediaPicker:matisse'
+include ':matisse'
