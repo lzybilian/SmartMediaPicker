@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 
+
 import me.bzcoder.mediapicker.R;
 import me.bzcoder.mediapicker.cameralibrary.JCameraView;
 import me.bzcoder.mediapicker.cameralibrary.listener.ClickListener;
@@ -58,7 +59,7 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.camera_layout);
         jCameraView = findViewById(R.id.jcameraview);
         //设置视频保存路径
-        jCameraView.setSaveVideoPath(Environment.getExternalStorageDirectory().getPath() + File.separator + "JCamera");
+        jCameraView.setSaveVideoPath(Environment.getExternalStorageDirectory() + "/" + "视频" + "/");
         jCameraView.setFeatures(JCameraView.BUTTON_STATE_BOTH);
         jCameraView.setMediaQuality(JCameraView.MEDIA_QUALITY_MIDDLE);
         jCameraView.setDuration(duration);
