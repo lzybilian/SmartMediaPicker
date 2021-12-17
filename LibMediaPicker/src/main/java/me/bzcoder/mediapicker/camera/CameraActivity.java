@@ -3,6 +3,7 @@ package me.bzcoder.mediapicker.camera;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -96,6 +97,7 @@ public class CameraActivity extends AppCompatActivity {
             public void captureSuccess(Bitmap bitmap) {
                 //获取图片bitmap
                 String path = FileUtil.saveBitmap("capture_photo", bitmap);
+                CameraActivity.this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,Uri.fromFile(new File(path))));
                 ArrayList<String> paths = new ArrayList<>(1);
                 paths.add(path);
                 Intent intent = new Intent();
@@ -106,6 +108,7 @@ public class CameraActivity extends AppCompatActivity {
 
             @Override
             public void recordSuccess(String url, Bitmap firstFrame) {
+                CameraActivity.this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,Uri.fromFile(new File(url))));
                 //获取视频路径
                 ArrayList<String> paths = new ArrayList<>(1);
                 paths.add(url);
